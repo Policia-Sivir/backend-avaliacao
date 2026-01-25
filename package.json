@@ -1,0 +1,36 @@
+{
+  "name": "backend-avaliacao",
+  "version": "1.0.0",
+  "description": "Deve ser permitir um administrador, usuário com acesso administrativo, criar, visualizar, deletar ou alterar informações de uma avaliação. Além de, vincular uma avaliação a uma categoria.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/App.ts",
+    "start": "node dist/App.js",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Policia-Sivir/backend-avaliacao.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Policia-Sivir/backend-avaliacao/issues"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.5",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^25.0.10",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "homepage": "https://github.com/Policia-Sivir/backend-avaliacao#readme"
+}
