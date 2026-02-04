@@ -5,6 +5,7 @@ import { ErrorConfigurationProperties } from "@/types";
 import { ApiError } from "@/utils/ApiError";
 import { Logger } from "@/utils/Logger";
 import { ErrorRequestHandler, Request, Response, NextFunction } from "express";
+import { ZodError } from "zod";
 
 export class ErrorHandlerMiddleware implements IMiddleware {
   readonly name: string
@@ -20,7 +21,11 @@ export class ErrorHandlerMiddleware implements IMiddleware {
   public getExpressHandler(): ErrorRequestHandler {
     return (error: Error, _req: Request, res: Response, _next: NextFunction) => {
       let apiError: ApiError 
-      if (!(error instanceof ApiError)) {
+
+      if (error instanceof ZodError) {
+        apiError = new ApiError(400, ErrorCodes.ERROR_0002, "Invalid request parameters")
+      }
+      else if (!(error instanceof ApiError)) {
         this.logger.error(error.message, error)
         apiError = new ApiError(500, ErrorCodes.ERROR_0000, this.errorConfiguration.properties[ErrorCodes.ERROR_0000])
       } else {
